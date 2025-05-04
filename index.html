@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AI-Powered Voice Assistant</title>
+        <link rel="stylesheet" href="less/style.css" type="text/css"/>
+    </head>
+    <body>
+        <h1>EM956 Community Assistant Powered by AI</h1>
+        
+        <div class="api-key-section">
+            <label for="apiKey">API Key:</label>
+            <input type="password" id="apiKey" placeholder="Enter your AI API key">
+            <button id="saveApiKey">Save Key</button>
+        </div>
+        
+        <div class="container">
+            <button id="startListening">Start Listening</button>
+            <button id="stopListening" disabled>Stop Listening</button>
+            <p id="status">Click "Start Listening" to activate voice recognition</p>
+            
+            <div id="result">
+                <p>Voice interactions will appear here...</p>
+            </div>
+        </div>
+
+        <script src="script/em956-community-assistant-with-ai.js"></script>
+    </body>
+</html>
