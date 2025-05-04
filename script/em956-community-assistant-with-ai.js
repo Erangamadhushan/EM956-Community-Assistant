@@ -130,6 +130,50 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (command.includes('bye') || command.includes('goodbye')) {
             return "Goodbye! Have a great day!";
         }
+        else if (command.includes('tell me a joke')) {
+            return "Why did the scarecrow win an award? Because he was outstanding in his field!";
+        } else if (command.includes('tell me a riddle')) {
+            return "I speak without a mouth and hear without ears. I have no body, but I come alive with the wind. What am I? (Answer: An echo)";
+        } else if (command.includes('what is your name')) {
+            return "I am your friendly voice assistant!";
+        } else if (command.includes('who created you')) {
+            return "I was created by a team of developers who love AI technology!";
+        }
+        else if (command.includes('what is your purpose')) {
+            return "My purpose is to assist you with information and tasks using AI technology!";
+        } else if (command.includes('tell me a fact')) {
+            return "Did you know? Honey never spoils. Archaeologists have found pots of honey in ancient Egyptian tombs that are over 3000 years old and still edible!";
+        } else if (command.includes('tell me a quote')) {
+            return "The only limit to our realization of tomorrow will be our doubts of today. - Franklin D. Roosevelt";
+        }
+        else if (command.includes('tell me a story')) {
+            return "Once upon a time, in a land far away, there lived a brave knight who fought dragons and saved the day!";
+        } else if (command.includes('tell me a poem')) {
+            return "Roses are red, violets are blue, I'm here to assist, just for you!";
+        } else if (command.includes('what is love')) {
+            return "Baby don't hurt me, don't hurt me no more!";
+        } else if (command.includes('sing a song')) {
+            return "La la la, I can't sing but I can help you find a song!";
+        }
+        else if (command.includes('tell me a tongue twister')) {
+            return "How can a clam cram in a clean cream can?";
+        } else if (command.includes('tell me a fun fact')) {
+            return "Did you know? Octopuses have three hearts!";
+        } else if (command.includes('what is the meaning of life')) {
+            return "The meaning of life is subjective, but many say it's about finding happiness and purpose!";
+        } else if (command.includes('what is your favorite color')) {
+            return "I don't have a favorite color, but I love all colors equally!";
+        } else if (command.includes('do you have feelings')) {
+            return "I don't have feelings like humans do, but I'm here to help you!";
+        } else if (command.includes('what is your favorite food')) {
+            return "I don't eat, but I hear pizza is quite popular!";
+        }
+        else if (command.includes('what is your favorite movie')) {
+            return "I don't watch movies, but I hear 'The Matrix' is a classic!";
+        } else if (command.includes('what is your favorite book')) {
+            return "I don't read books, but I hear '1984' by George Orwell is a great read!";
+        }
+        
         
         // Not a built-in command, send to AI API
         return null;
