@@ -173,6 +173,42 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (command.includes('what is your favorite book')) {
             return "I don't read books, but I hear '1984' by George Orwell is a great read!";
         }
+
+        // Handle web search and app launch commands
+        if (command.includes('search the web') || command.includes('search')) {
+
+            const query = command.replace('search the web', '').replace('search', '').trim();
+            window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank');
+            return `Searching the web for "${query}"...`;
+            
+        } else if (command.includes('open') || command.includes('launch')) {
+
+            const appName = command.replace('open', '').replace('launch', '').trim();
+            window.open(`https://www.google.com/search?q=${encodeURIComponent(appName)}`, '_blank');
+            return `Opening ${appName}...`;
+
+        } else if (command.includes('translate') || command.includes('translation')) {
+
+            const textToTranslate = command.replace('translate', '').replace('translation', '').trim();
+            window.open(`https://translate.google.com/?text=${encodeURIComponent(textToTranslate)}`, '_blank');
+            return `Translating "${textToTranslate}"...`;
+
+        } else if (command.includes('tell me a fact') || command.includes('fact')) {
+            return "Did you know that honey never spoils? Archaeologists have found pots of honey in ancient Egyptian tombs that are over 3000 years old and still perfectly edible!";
+        } else if (command.includes('tell me a riddle') || command.includes('riddle')) {
+            return "I speak without a mouth and hear without ears. I have no body, but I come alive with the wind. What am I? (Answer: An echo)";
+        } else if (command.includes('calculate') || command.includes('math')) {
+            const expression = command.replace('calculate', '').replace('math', '').trim();
+            try {
+                const result = eval(expression);
+                return `The result of ${expression} is ${result}.`;
+            } catch (error) {
+                return "I'm sorry, but I couldn't calculate that. Please check your expression.";
+            }
+        }
+        else {
+            return null; // Command not recognized
+        }
         
         
         // Not a built-in command, send to AI API
