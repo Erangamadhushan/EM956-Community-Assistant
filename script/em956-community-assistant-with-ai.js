@@ -114,6 +114,31 @@ document.addEventListener('DOMContentLoaded', () => {
             stopListening();
             return "I've stopped listening.";
         }
+
+        // Handle theme color functionality
+        if(command.includes('change theme to light') || command.includes('light mode') || command.includes('switch to light mode') || command.includes('switch to default mode')) {
+            // Check if dark mode is active and remove it
+            if(document.body.classList.contains('dark-mode') || document.body.classList.contains('blue-mode')) {
+                document.body.classList.remove('dark-mode', 'blue-mode');
+                return "Switched to light mode.";
+            }
+            
+            return "Light mode is already active.";
+        }
+        else if(command.includes('change theme to dark') || command.includes('dark mode') || command.includes('switch to dark mode')) {
+            if(!document.body.classList.contains('dark-mode')) {
+                document.body.classList.add('dark-mode');
+                return "Switched to dark mode.";
+            }
+            return "Dark mode is already active.";
+        }
+        else if(command.includes('change theme to blue') || command.includes('blue mode') || command.includes('switch to blue mode')) {
+            if(!document.body.classList.contains('blue-mode')) {
+                document.body.classList.add('blue-mode');
+                return "Switched to blue mode.";
+            }
+            return "Blue mode is already active.";
+        }
         
         // Simple built-in responses for common queries
         // Return null if the command isn't recognized so it can be sent to the AI API
@@ -172,6 +197,42 @@ document.addEventListener('DOMContentLoaded', () => {
             return "I don't watch movies, but I hear 'The Matrix' is a classic!";
         } else if (command.includes('what is your favorite book')) {
             return "I don't read books, but I hear '1984' by George Orwell is a great read!";
+        }
+
+        // Handle web search and app launch commands
+        if (command.includes('search the web') || command.includes('search')) {
+
+            const query = command.replace('search the web', '').replace('search', '').trim();
+            window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank');
+            return `Searching the web for "${query}"...`;
+
+        } else if (command.includes('open') || command.includes('launch')) {
+
+            const appName = command.replace('open', '').replace('launch', '').trim();
+            window.open(`https://www.google.com/search?q=${encodeURIComponent(appName)}`, '_blank');
+            return `Opening ${appName}...`;
+
+        } else if (command.includes('translate') || command.includes('translation')) {
+
+            const textToTranslate = command.replace('translate', '').replace('translation', '').trim();
+            window.open(`https://translate.google.com/?text=${encodeURIComponent(textToTranslate)}`, '_blank');
+            return `Translating "${textToTranslate}"...`;
+
+        } else if (command.includes('tell me a fact') || command.includes('fact')) {
+            return "Did you know that honey never spoils? Archaeologists have found pots of honey in ancient Egyptian tombs that are over 3000 years old and still perfectly edible!";
+        } else if (command.includes('tell me a riddle') || command.includes('riddle')) {
+            return "I speak without a mouth and hear without ears. I have no body, but I come alive with the wind. What am I? (Answer: An echo)";
+        } else if (command.includes('calculate') || command.includes('math')) {
+            const expression = command.replace('calculate', '').replace('math', '').trim();
+            try {
+                const result = eval(expression);
+                return `The result of ${expression} is ${result}.`;
+            } catch (error) {
+                return "I'm sorry, but I couldn't calculate that. Please check your expression.";
+            }
+        }
+        else {
+            return null; // Command not recognized
         }
         
         
@@ -240,4 +301,16 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("Voices loaded.");
         };
     }
+
+    function synthesisError(event) {
+        console.error("Speech synthesis error:", event.error);
+    }
+    synth.addEventListener('error', synthesisError);
+    synth.addEventListener('end', () => {
+        console.log("Speech synthesis finished.");
+    });
+
+    // Initialize the app
+
+
 });

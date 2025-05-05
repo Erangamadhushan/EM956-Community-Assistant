@@ -5,6 +5,14 @@ body {
   padding: 20px;
   text-align: center;
 }
+body.dark-mode {
+  background-color: #272a2e;
+  color: #ecf0f1;
+}
+body.blue-mode {
+  background-color: #064c7b;
+  color: #ecf0f1;
+}
 .container {
   margin-top: 20px;
 }
