@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(command.includes('change theme to light') || command.includes('light mode') || command.includes('switch to light mode') || command.includes('switch to default mode')) {
             // Check if dark mode is active and remove it
             if(document.body.classList.contains('dark-mode') || document.body.classList.contains('blue-mode')) {
-                document.body.classList.remove('dark-mode') || document.body.classList.remove('blue-mode');
+                document.body.classList.remove('dark-mode', 'blue-mode');
                 return "Switched to light mode.";
             }
             
