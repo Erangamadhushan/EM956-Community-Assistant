@@ -114,6 +114,31 @@ document.addEventListener('DOMContentLoaded', () => {
             stopListening();
             return "I've stopped listening.";
         }
+
+        // Handle theme color functionality
+        if(command.includes('change theme to light') || command.includes('light mode') || command.includes('switch to light mode') || command.includes('switch to default mode')) {
+            // Check if dark mode is active and remove it
+            if(document.body.classList.contains('dark-mode') || document.body.classList.contains('blue-mode')) {
+                document.body.classList.remove('dark-mode') || document.body.classList.remove('blue-mode');
+                return "Switched to light mode.";
+            }
+            
+            return "Light mode is already active.";
+        }
+        else if(command.includes('change theme to dark') || command.includes('dark mode') || command.includes('switch to dark mode')) {
+            if(!document.body.classList.contains('dark-mode')) {
+                document.body.classList.add('dark-mode');
+                return "Switched to dark mode.";
+            }
+            return "Dark mode is already active.";
+        }
+        else if(command.includes('change theme to blue') || command.includes('blue mode') || command.includes('switch to blue mode')) {
+            if(!document.body.classList.contains('blue-mode')) {
+                document.body.classList.add('blue-mode');
+                return "Switched to blue mode.";
+            }
+            return "Blue mode is already active.";
+        }
         
         // Simple built-in responses for common queries
         // Return null if the command isn't recognized so it can be sent to the AI API
@@ -180,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const query = command.replace('search the web', '').replace('search', '').trim();
             window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank');
             return `Searching the web for "${query}"...`;
-            
+
         } else if (command.includes('open') || command.includes('launch')) {
 
             const appName = command.replace('open', '').replace('launch', '').trim();
@@ -276,4 +301,16 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("Voices loaded.");
         };
     }
+
+    function synthesisError(event) {
+        console.error("Speech synthesis error:", event.error);
+    }
+    synth.addEventListener('error', synthesisError);
+    synth.addEventListener('end', () => {
+        console.log("Speech synthesis finished.");
+    });
+
+    // Initialize the app
+
+
 });
